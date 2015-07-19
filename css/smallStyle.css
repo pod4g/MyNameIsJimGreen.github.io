@@ -3,6 +3,7 @@ body,button,dd,dt,dl,form,h1,h2,h3,h4,h5,h6,input,li,ol,p,select,table,td,textar
 html{font-size:100px;-ms-touch-action:none;}
 body,button,input,select,textarea{font-family:"方正兰亭细黑简体","微软雅黑",Verdana,Arial,Helvetica,sans-serif;line-height:1.5;}
 img{border:0;}
+html,body{overflow-x:hidden;}
 ol,ul,li{list-style:none;}
 a{color:#333;text-decoration:none;outline:none;}
 img{vertical-align:middle;}
