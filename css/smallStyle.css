@@ -111,9 +111,6 @@ input[type="button"],input[type="submit"],input[type="reset"]{-webkit-appearance
 	  color:#2b3b4b;
 	  margin:4px 0 5px 0;
 }
-/*根据不同的屏幕宽度调整头像圆距离name title的距离*/
-/*媒体查询可以省略掉 screen and*/
-/*@media screen and (max-width:1087px){html,button,input,select,table,textarea{font-size:100px;}}*/
 @media (min-width:600px){.header-top{margin-top:12%;}}
 @media (min-width:900px){.header-top{margin-top:11%;}}
 /*职位介绍*/
