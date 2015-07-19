@@ -120,6 +120,7 @@ input[type="button"],input[type="submit"],input[type="reset"]{-webkit-appearance
 .header-top small{
 	color:#7f8a90;
 	font-weight:300;
+  font-size:.3rem;
 }
 /*about me*/
 .about{
@@ -155,6 +156,7 @@ h3.top-title{
   font-weight:400;
   font-size:17px;
   color:#7f8a90;
+  text-indent:20px;
 }
 @media (max-width: 640px){
 	.about-top p.about-p {
