@@ -590,6 +590,16 @@ label.book{
   }
 }
 
+.totop{
+  position:fixed;
+  display:block;
+  height:40px;
+  width:40px;
+  background:red;
+  right:10px;
+  bottom:70px;
+}
+
 .footer {
   padding:20px 0;
   text-align: center;
