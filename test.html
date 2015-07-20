@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	 body{
+	 	margin-left:30px;
+	 	margin-top:20px;
+	 }
+     .d{
+     	height:200px;
+     	width:100px;
+     	background:red;
+     	padding:10px;
+     	border:10px #fff solid;
+     }
+	</style>
+</head>
+<body>
+	<div class="d"></div>
+<script>
+alert(document.documentElement.clientHeight);
+alert(document.body.clientHeight);
+var clientHeight =  document.documentElement.clientHeight || document.body.clientHeight;
+alert(clientHeight);
+
+</script>
+</body>
+</html>

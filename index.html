@@ -167,7 +167,45 @@
 <P class="copyright">此网页由<a href="http://www.babyforlove.com">李彦峰</a>设计与实现</P>
 </div>
 <audio src="sources/1.mp3" autoplay="autoplay" loop="loop"></audio>
-<!-- <a href="javascript:;" class="totop">回到顶部</a> -->
+<a href="javacript:;" class="totop">回到顶部</a>
 <script>var _hmt = _hmt || [];(function(){var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?c47a84206681693e534ee69cbd180f19";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();
 if(/window|ipad/i.test(navigator.userAgent)){document.querySelector('audio').src = "sources/2.mp3";}
+window.addEventListener('DOMContentLoaded',function(){
+  var totop = document.querySelector(".totop");
+  var timer = null;
+  var stop = true;
+  var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+  // 获取页面可视区的高度
+  window.onscroll = function(){
+        
+        var top = document.documentElement.scrollTop || document.body.scrollTop;
+
+        if(top >= clientHeight){
+          totop.style.display="block";
+        }else{
+          totop.style.display="";
+        }
+
+        if(!stop){
+          clearInterval(timer);
+        }
+        stop = false;
+
+        console.log(document.documentElement.scrollHeight);
+  }
+  totop.onclick = function(e){
+    //阻止ie跳转 
+    e.preventDefault();
+     timer = setInterval(function(){
+        var top =  document.documentElement.scrollTop || document.body.scrollTop;
+        var speed = Math.ceil(top/8);
+        document.body.scrollTop = document.documentElement.scrollTop = top - speed;
+        stop = true;
+        if(top===0) {
+          clearInterval(timer);
+        }
+      },30)
+  }
+},false)
 </script></body></html>
