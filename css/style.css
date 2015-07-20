@@ -536,6 +536,7 @@ label.bag:hover,label.book:hover{
   display:none;
   font-size:14px;
   text-align:center;
+  color:#fff;
 }
 .footer{
   padding:2em 0;
