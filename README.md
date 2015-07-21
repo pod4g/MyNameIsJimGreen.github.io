@@ -45,7 +45,8 @@
    总结：可以概括一句话：流主外，文主内。
    注意：普通用户调整的“兼容性视图”，是调整的“浏览器模式”，所以调整完，不一定能改变网页的显示及js的执行方式
 
-   如果是IE9兼容性视图那么用!-[1,]是false
+   文档模式决定了页面的布局及js的执行方式。当文档模式为混杂模式时 !-[1,] 返回true。。
+   他存在的意义在于，一些老的网站的布局及js的执行，在新浏览器下不至于乱掉或错误。
 
 
  8、在IE下，决定文档最终的呈现方式的有两种
@@ -71,7 +72,10 @@
      var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
 
      必须这样写顺序也不能变。第二个是为了兼容没有Doctype的chrome。
+ 
+ 11、可能css3为了鼓励使用translate来位移，所以把按照top和left的位移变的很生硬（transition）
 
+ 12、在编程时，发现transition和transform不能一起设置cssText
 
 
 
