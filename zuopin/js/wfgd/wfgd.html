@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>无缝滚动</title>
+<style>
+html,body,div,ul,li{
+  margin:0;
+  padding:0;
+}
+img{vertical-align:middle;}
+ul,li{list-style:none;}
+.clearfix:after{
+	clear:both;
+	content:" ";
+	visibility:visible;
+    display:block;
+    font-size:0;
+    height:0;
+}
+.contain{
+	width:1200px;
+	margin:100px auto;
+	overflow: hidden;
+}
+.contain ul li{
+	float:left;
+}
+.biji{
+	margin:0 auto;
+	font:18px/2 "微软雅黑"; 
+}
+.biji p{
+	text-align: center;
+}
+</style>
+</head>
+<body>
+    <div class="biji">
+    	<p>
+    		支持所有浏览器。<br>在支持CSS3的浏览器下用CSS3动画完成，否则完全用js完成
+    	</p>
+    </div>
+	<div class="contain">
+		<ul class="clearfix">
+			<li><img src="1.jpg" alt=" " height="300" width="300"></li>
+			<li><img src="2.jpg" alt=" " height="300" width="300"></li>
+			<li><img src="3.jpg" alt=" " height="300" width="300"></li>
+			<li><img src="4.jpg" alt=" " height="300" width="300"></li>
+		</ul>
+	</div>
+<script>
+(function() {
+  var contain = null;
+
+  function getByClass(className,parent){
+  	var 
+  	    doc = window.document,
+  	    result = childNodes = child = null,
+  	    i = len = 0;
+  	    parent = parent || doc;
+    // 标准浏览器和IE89
+    if("querySelector" in doc){
+    	 result = parent.querySelectorAll("."+className);
+    // ?
+    }else if("getElementsByClassName" in doc){
+         result = parent.getElementsByClassName(className);
+    // IE67
+    } else {
+    	if(parent === doc){
+    		if(parent.body.className === className){
+    			return parent.body;
+    		}
+    		parent = parent.body;
+    	}
+    	childNodes = parent.children;
+        len = childNodes.length;
+        result = [];
+        while(i<len){
+            child = childNodes[i++];
+        	if(child.className === className){
+        		result.push(child);
+        	}
+        }
+    }
+    return result && result.length?result[0]:result;
+  }
+
+  function supportStyle(styleName){
+    var 
+  	    fixArrC = ["Webkit","Moz","Ms","O"],
+  	    i = 0,
+  	    len = fixArrC.length,
+  	    fix = "",
+  	    styleObj = document.body.style;
+    if(!styleName){
+    	return false;
+    }
+  	
+    if(styleName in styleObj){
+    	return true;
+    }else{
+        styleName = styleName.charAt(0).toUpperCase() + styleName.substring(1);
+        while(i<len){
+           fix = fixArrC[i++];
+           if(fix+styleName in styleObj){
+	        	return true;
+	       }else{
+	        	return false;
+	       } 
+        }
+    }
+    return false;
+  }
+  
+  var contain = getByClass("contain");
+  var clearfix = getByClass("clearfix",contain);
+  var clearfixLiArr = clearfix.getElementsByTagName("li");
+  var html = clearfix.innerHTML;
+  clearfix.innerHTML += html;
+  clearfix.style.width = clearfixLiArr[0].offsetWidth * clearfixLiArr.length +"px";
+  
+
+  function createFixStyleStr(style,value){
+  	var 
+  	   fixArr = ["-webkit-","-moz-","-ms-","-o-"],
+       i = 0,
+       fix = fixStyleStr = "",
+       len = fixArr.length;
+     if(!style || !value){
+     	return "";
+     }
+     fixStyleStr = style+":"+value+";";
+     while(i<len){
+       fix = fixArr[i++];
+       fixStyleStr += fix + style+":"+value+";";
+     }
+     // 把最后一个 ; 去掉，后来我想想没必要
+     return fixStyleStr.substring(0,fixStyleStr.length-1);
+     // return fixStyleStr;
+  }
+  function getStyle(obj,style){
+    if(obj.currentStyle){
+    	// IE
+    	return obj.currentStyle[style];
+    }else{
+    	// 标准
+    	return getComputedStyle(obj,false)[style];
+    }
+  }
+  //如果支持 transform，就用transform完成
+  if(supportStyle("transition")){
+     var fixStyleStr  = createFixStyleStr("transition","all 5s linear");
+     var width = parseInt(getStyle(clearfix,"width"));
+     // 这样设置才成功
+     fixStyleStr  += createFixStyleStr("transform","translate(-"+width/2+"px)");
+  	 clearfix.style.cssText +=  fixStyleStr; 
+       /*
+        //这样设置不成功很求怪啊
+        var fixStyleStr22 = createFixStyleStr("transform","translate(-"+width/2+"px)");
+        fixStyleStr  += fixStyleStr22;
+  	    clearfix.style.cssText +=  fixStyleStr;
+  	    */
+      // 执行检查
+      var timer = setInterval(function(){
+          
+          var trans = getStyle(clearfix,"transform");
+          console.log(trans);
+          if(trans.indexOf("1200")!=-1){
+          	console.log("运动结束")
+          	clearfix.style.trasnition = " ";
+          	clearfix.style.webkitTrasnition = " ";
+          	clearfix.style.transform ="translate(0)";
+          	clearfix.style.webkitTransform ="translate(0)";
+          	var innerTimer= setInterval(function(){
+                clearfix.style.trasnition = "all 5s linear";
+	          	clearfix.style.webkitTrasnition = "all 5s linear";
+	          	clearfix.style.transform ="translate(0)";
+	          	clearfix.style.webkitTransform ="translate(-"+width/2+"px)";
+	          	clearInterval(innerTimer);
+          	},100)
+          }
+      },50);
+
+  }
+  
+
+
+})();
+</script>
+</body>
+</html>
