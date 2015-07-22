@@ -71,7 +71,7 @@ input[type="button"],input[type="submit"],input[type="reset"]{-webkit-appearance
 }
 #G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area{
 	color:#fff;
-	padding: 10px 5px;
+	padding:5px;
 	font-size: 15px;
 }
 #G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area .lightbox-of-index{
