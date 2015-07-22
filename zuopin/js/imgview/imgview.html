@@ -92,7 +92,6 @@ html,body{
   
   for(var i = 0;i<aLi.length;i++){
   	var li = aLi[i];
-  	console.log("第"+(i+1)+"个li的left:"+li.offsetLeft+",第"+(i+1)+"个li的top:"+li.offsetTop);
   	li.style.left = li.offsetLeft+"px";
   	li.style.top = li.offsetTop+"px";
   }
@@ -111,9 +110,6 @@ html,body{
   	}
   }
   
-
-
-
 function move(obj,json,fnEnd){
           clearInterval(obj.timer);
           obj.timer = setInterval(function(){
