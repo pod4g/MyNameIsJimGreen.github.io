@@ -64,7 +64,7 @@ html,body{
 <body>
 <div class="biji">
     	<p>
-    		支持除了IE6、7以外的所有浏览器。<br>
+    		支持除了IE6、7、8以外的所有浏览器。<br>
     		关键点是：float转position，并且先设置left和top，然后在另一个循环设置position
     	</p>
     </div>
@@ -142,11 +142,11 @@ function move(obj,json,fnEnd){
           },30);
       }
 function getStyle(obj,name){
-	 if(obj.currentStyle){
-	 	return obj.currentStyle[name];
-	 }else {
-	 	return getComputedStyle(obj,false)[name];
-	 }
+  if(obj.currentStyle){
+     return obj.currentStyle[name];   
+  }else{
+     return getComputedStyle(obj,false)[name];
+  }
 }
 })();
 </script>
