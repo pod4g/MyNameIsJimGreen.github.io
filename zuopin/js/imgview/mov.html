@@ -24,10 +24,8 @@
 </style>
 </head>
 <body>
-
 <div class="d"></div>
 <div class="line"></div>
-
 <script>
 
 	(function(){
@@ -36,45 +34,9 @@
 
       d.onclick = function(){
   
-          move(this,"top",100);
+          
          
-
       }
-
-      function move(obj,name,value){
-
-      	   value = 500;
-
-           obj.timer = setInterval(function(){
-                
-      	  	 var current = parseFloat(getStyle(obj,"left"));
-
-             var speed = (value - current)/6;
-
-             speed = speed > 0 ? speed:Math.ceil(speed);
-
-             console.log(speed);
-
-      	  	 current+=speed;
-             
-             document.title = current;
-
-      	  	 if(current == value){
-
-      	  	 	obj.style.left = value+"px";
-
-                clearInterval(obj.timer);
-
-      	  	 }else{
-
- 	 			obj.style.left = current + "px";
-      	  	 
-      	  	 }
-
-           },30);
-
-      }
-
 
       function startMove(obj,json,fnEnd){
           clearInterval(obj.timer);

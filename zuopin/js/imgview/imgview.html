@@ -39,8 +39,6 @@ html,body{
 	top: 50%;
 	margin-left: -225px;
 	margin-top: -225px;
-
-
 }
 .img-item{
 	float: left;
@@ -56,17 +54,20 @@ html,body{
 .biji p{
 	text-align: center;
 }
-
+.img-list{
+	position: relative;
+}
 </style>
 </head>
 <body>
 <div class="biji">
     	<p>
-    		支持除了IE6、7以外的所有浏览器。
+    		支持除了IE6、7以外的所有浏览器。<br>
+    		关键点是：float转position，并且先设置left和top，然后在另一个循环设置position
     	</p>
     </div>
 <div class="contain">
-	<ul class="img-list">
+	<ul id="img-list" class="img-list clearfix">
 		<li class="img-item"><img src="images/1.jpg" alt="" width="150" height="150"></li>
 		<li class="img-item"><img src="images/2.jpg" alt="" width="150" height="150"></li>
 		<li class="img-item"><img src="images/3.jpg" alt="" width="150" height="150"></li>
@@ -83,12 +84,72 @@ html,body{
 <script>
 (function(){
 
-  function startMove(obj,target,fn){
-
-     
-
+  
+  var ul = document.getElementById("img-list");
+  var aLi = ul.getElementsByTagName("li");
+  
+  for(var i = 0;i<aLi.length;i++){
+  	var li = aLi[i];
+  	console.log("第"+(i+1)+"个li的left:"+li.offsetLeft+",第"+(i+1)+"个li的top:"+li.offsetTop);
+  	li.style.left = li.offsetLeft+"px";
+  	li.style.top = li.offsetTop+"px";
   }
+  var zIndex = 0;
+  for(var i = 0;i<aLi.length;i++){
+  	var li = aLi[i];
+  	li.style.position = "absolute"
+  	li.onmouseover = function(){
+  		 this.style.zIndex = zIndex++;
+  		 move(this,{width:300,height:300,marginLeft:-75,marginTop:-75});
+  		 move(this.getElementsByTagName("img")[0],{width:300,height:300});
+  	}
+  	li.onmouseout = function(){
+  		move(this,{width:150,height:150,marginLeft:0,marginTop:0});
+  		move(this.getElementsByTagName("img")[0],{width:150,height:150});
+  	}
+  }
+  
 
+
+
+function move(obj,json,fnEnd){
+          clearInterval(obj.timer);
+          obj.timer = setInterval(function(){
+              var bStop = true;
+              for(var attr in json){
+                  var cur = 0;
+                  if(attr == "opacity"){
+                      cur = Math.round(parseFloat(getStyle(obj,attr))*100);
+                  }else {
+                      cur = parseInt(getStyle(obj,attr));
+                  }
+
+                  var speed = (json[attr]-cur)/6;
+                  speed = speed>0?Math.ceil(speed):Math.floor(speed);
+
+                  if(cur!=json[attr]) bStop = false;
+
+                  if(attr=="opacity"){
+                      cur+=speed;
+                      obj.style.filter = "alpha(opacity:"+cur+")";
+                      obj.style.opacity = cur/100;
+                  }else{
+                      obj.style[attr] = cur+speed+"px";
+                  }
+              }
+              if(bStop){
+                  clearInterval(obj.timer);
+                  if(fnEnd)fnEnd();
+              }
+          },30);
+      }
+function getStyle(obj,name){
+	 if(obj.currentStyle){
+	 	return obj.currentStyle[name];
+	 }else {
+	 	return getComputedStyle(obj,false)[name];
+	 }
+}
 })();
 </script>
 </body>
