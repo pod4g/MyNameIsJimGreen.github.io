@@ -77,6 +77,35 @@
 
  12、在编程时，发现transition和transform不能一起设置cssText
 
+ 13、
+
+@keyframes 规定动画。
+animation 所有动画属性的简写属性，除了 animation-play-state 属性。
+animation-name  规定 @keyframes 动画的名称。
+animation-duration  规定动画完成一个周期所花费的秒或毫秒。默认是 0。 
+animation-timing-function 规定动画的速度曲线。默认是 "ease"。
+animation-delay 规定动画何时开始。默认是 0。
+
+animation-iteration-count 规定动画被播放的次数。默认是 1。常用infinite来无限循环动画。
+n 定义动画播放次数的数值。
+infinite  规定动画应该无限次播放。
+
+animation-direction 规定动画是否在下一周期逆向地播放。默认是 "normal"。
+normal  默认值。动画应该正常播放。此属性决定了我能不能实现CD效果。默认就是CD效果
+alternate 动画应该轮流反向播放。
+
+animation-play-state  规定动画是否正在运行或暂停。默认是 "running"。
+paused  规定动画已暂停。
+running 规定动画正在播放。
+
+
+animation-fill-mode 规定对象动画时间之外的状态。此属性决定了能不能用animation实现跟move.js相同的效果
+
+none  不改变默认行为。
+forwards  当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。
+backwards 在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。
+both  向前和向后填充模式都被应用。
+
 
 
 
