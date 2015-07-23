@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta content="IE=edge,chrome=1" http-equiv=X-UA-Compatible>
@@ -53,6 +53,7 @@ body{font:18px/1.5 "方正兰亭细黑简体","微软雅黑",Verdana,Arial,Helve
    left: 50%;
    top: 50%;
    transform:translate(-50%,-50%);
+   -webkit-transform:translate(-50%,-50%);
 }
 .margin{
 	position: relative;
@@ -90,7 +91,7 @@ body{font:18px/1.5 "方正兰亭细黑简体","微软雅黑",Verdana,Arial,Helve
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
 }
 .type2-inline-block{
   text-align: center;
@@ -113,7 +114,7 @@ body{font:18px/1.5 "方正兰亭细黑简体","微软雅黑",Verdana,Arial,Helve
 </head>
 <body>
 	
-<h3>1、固定高度居中。外部宽高100px</h3>
+<h3>1、固定高度居中。外部宽高100px。请在webkit内核浏览器下查看</h3>
 
 <p>a、使用display:box。内部宽高50px</p>
 <div class="center box"><div class="type1">居中</div></div>
