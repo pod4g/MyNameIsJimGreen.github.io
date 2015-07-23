@@ -96,6 +96,7 @@
    var d1 = document.getElementById("d1");
    d1.onclick = function(){
    	 if(count % 2 == 0){
+      // 果然用js 赋值时，不能用 this.style.webkitTransform = "-webkit-translateX(300px)";
    	 	this.style.webkitTransform = "translateX(300px)";
    	 	this.style.mozTransform = "translateX(300px)";
    	 	this.style.msTransform = "translateX(300px)";
