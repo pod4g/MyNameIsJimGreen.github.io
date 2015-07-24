@@ -1,15 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta content="IE=edge,chrome=1" http-equiv=X-UA-Compatible>
-<meta content=320 name=MobileOptimized>
-<meta content=yes name=apple-mobile-web-app-capable>
-<meta content=black name=apple-mobile-web-app-status-bar-style>
-<meta name=format-detection content="telephone=no">
-<meta name=viewport content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name=description content="李彦峰">
-<meta name=keywords content="李彦峰,个人作品">
 <title>float特性研究</title>
 <style>
 html,body,h3,div,p{margin: 0;padding-top: 0;}
@@ -77,6 +69,8 @@ h3{
 	<div class="contain">
     <h3>float的出现就是为了实现下面的图文环绕的效果</h3>
 	<img class="img-float" src="images/3.jpg" alt="">
+    <p>float不脱离文档流，如果脱离了文档流的话，就相当于他不存在一样，但是float之后呢，他后面的元素的内容并不会被float遮挡掉，所以他没有脱离文档流。只不过浮动之后呢，就不在占有原来的位置。但是其他元素的内容也别想占他的位置。</p>
+    <p>这个就是包裹性，也就是inline-block化，任何元素都可以浮动。浮动元素会生成一个块级框，而不论它本身是何种元素。</p>
 	<p>content area 是围绕文字的一个看不见的区域</p>
 	<p>inline boxes 内联盒子 不会让内容成块显示，而是排成一行，每个文字或每张图片都是一个inline boxes。分为两种，若文字由span、em、small、strong等行内元素包裹，那么这些文字就是 内联盒子，若是一个光秃秃的文字，那么就是匿名内联盒子</p>
 	<p>line boxes 行框盒子 每一行就是一个行框盒子，每个行框盒子又是由一个个的 内联盒子 组成</p>
@@ -172,13 +166,16 @@ h3{
          <p style="clear:both;">结论：更改外部元素的样式对布局无影响。但是更改内部元素的样式，
           border、padding、margin一定要注意对布局的影响，因为可能会溢出。由此可见content的宽度等于盒子宽度才不会溢出。
          </p>
+         <a name="float-margin"></a>
          <h3 class="clear">float布局的注意事项之对margin的影响</h3> 
-         <p style="clear:both;">正常情况。左右margin叠加为20px。add(10px,10px)</p>
-		 <div style="height:50px;width:50px;background:red;margin-right:10px;display:inline-block;"></div> 
-         <div style="height:50px;width:50px;background:red;margin-left:10px;display:inline-block;"></div>
          <p style="clear:both;">正常情况。上下margin折叠为20px。max(10px,20px)</p>
 		 <div style="height:50px;width:50px;background:red;margin-bottom:10px;"></div> 
          <div style="height:50px;width:50px;background:red;margin-top:20px;"></div> 
+         
+         <p>display:inline-block的注意事项：inline-block相邻的元素之间默认是有空白的。所以两者之间的间距就是 30 + 默认空白。</p>
+         <p style="clear:both;">正常情况。左右margin叠加为30px。add(10px,20px)</p>
+         <div style="height:50px;width:50px;background:red;margin-right:10px;display:inline-block;"></div> 
+         <div style="height:50px;width:50px;background:red;margin-left:20px;display:inline-block;"></div>
 
          <p style="clear:both;">float情况下。左右margin叠加为30px。add(10px,20px)</p>
          <div style="height:50px;width:50px;background:red;margin-right:20px;" class="f_l"></div> 
@@ -191,6 +188,26 @@ h3{
          <p style="clear:both;">上float，下不float。margin-top <= margin-bottom + 上height 时，由 margin-bottom决定，反之，下面才起作用，且大小为  margin-bottom + (margin-top - margin-bottom - 上height) ==> margin-top - 上height </p>
          <div style="height:50px;width:50px;background:red;margin-bottom:10px;"  class="f_l"></div> 
          <div style="height:50px;width:50px;background:red;margin-top:61px;clear:both"></div>
+
+         <h3 class="clear">float是否脱离文档流</h3>
+         <p>float脱离文档流？</p>
+         <div style="border:1px #000 solid;width:100px;height:100px;float:left"></div>
+         <div style="border:1px red solid;width:70px;height:70px;">红框</div>
+         <p class="clear" style="padding-top:50px;">如果红框内容是图片呢？</p>
+         <div style="border:1px #000 solid;width:100px;height:100px;float:left;clear:both;"></div>
+         <div style="border:1px red solid;width:70px;height:70px;">
+             <img src="images/3.jpg" height="50%" width="50%">
+         </div>
+
+         <p class="clear" style="padding-top:50px;">如果红框的子元素有内容呢？</p>
+         <div style="border:1px #000 solid;width:100px;height:100px;float:left;clear:both;"></div>
+         <div style="border:1px red solid;width:70px;height:70px;">
+             <div>haha</div>
+         </div>
+        
+          <p style="clear:both;padding-top:50px;">结论：float不脱离文档流，如果脱离了文档流的话，就相当于他不存在一样，但是float之后呢，他后面的元素的内容并不会被float遮挡掉，所以他没有脱离文档流。只不过浮动之后呢，就不在占有原来的位置。但是其他元素的内容也别想占他的位置。</p>
+       
+        
 	</div>
 <script>
 	
