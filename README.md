@@ -106,6 +106,15 @@ forwards  当动画完成后，保持最后一个属性值（在最后一个关�
 backwards 在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。
 both  向前和向后填充模式都被应用。
 
+14、
+
+以下的都是可以被继承的，除了这些之外，其他的都不可被继承：
+
+文本相关属性：font-family, font-size, font-style,font-variant, font-weight, font, letter-spacing,
+line-height，text-align, text-indent, text-transform,word-spacing
+列表相关属性：
+list-style-image, list-style-position,list-style-type, list-style
+还有一个属性比较重要，color属性。
 
 
 
