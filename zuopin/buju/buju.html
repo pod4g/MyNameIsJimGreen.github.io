@@ -130,12 +130,12 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 <div id="wrapper">
 	<div id="scroller">
 		<ul>
-			<li><a href="float.html">论float</a></li>
-			<li><a href="absolute.html">论absolute</a></li>
-			<li><a href="line-height.html">论line-height</a></li>
-			<li><a href="width.html">论width&height</a></li>
-			<li><a href="margin.html">论margin</a></li>
-			<li><a href="inline-block.html">论inline-block</a></li>
+			<li><a href="float.html" outouchend="loction.href=this.href">论float</a></li>
+			<li><a href="absolute.html" outouchend="loction.href=this.href">论absolute</a></li>
+			<li><a href="line-height.html" outouchend="loction.href=this.href">论line-height</a></li>
+			<li><a href="width.html" outouchend="loction.href=this.href">论width&height</a></li>
+			<li><a href="margin.html" outouchend="loction.href=this.href">论margin</a></li>
+			<li><a href="inline-block.html" outouchend="loction.href=this.href">论inline-block</a></li>
 			<!-- 
 			<li><a href="BFC.html" ontouchstart="location.href=this.href">论BFC</a></li>
 			<li><a href="vertical.html" ontouchstart="location.href=this.href">论vertical</a></li>
@@ -144,10 +144,10 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 			<li><a href="pubu.html" ontouchstart="location.href=this.href">布局方法论</a></li>
 			<li><a href="pubu.html" ontouchstart="location.href=this.href">论响应式布局</a></li>
 			-->
-			<li><a href="center.html">论居中</a></li>
-			<li><a href="dialog.html">弹框布局</a></li>
-			<li><a href="circle.html">一个css3实现的特效</a></li>
-			<li><a href="../hio/index.html">很早之前写的</a></li>
+			<li><a href="center.html" outouchend="loction.href=this.href">论居中</a></li>
+			<li><a href="dialog.html" outouchend="loction.href=this.href">弹框布局</a></li>
+			<li><a href="circle.html" outouchend="loction.href=this.href">一个css3实现的特效</a></li>
+			<li><a href="../hio/index.html" outouchend="loction.href=this.href">很早之前写的</a></li>
 			<li></li>
             
             <li><a href="#"></a></li>
@@ -213,7 +213,6 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 
     var count = 0;
     function tap(obj,fn) {
-
 		if(!obj || !fn || !"ontouchstart" in document.body){
 			return;
 		};
@@ -228,7 +227,7 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
        });
        obj.addEventListener("touchend",function(){
        	  if(new Date - time <= 150){
-       	  	obj.call(fn);
+       	  	fn();
           };
        });
        count++;
