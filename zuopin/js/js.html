@@ -165,11 +165,14 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
     		})
     	}
     }
-
+    var count = 0;
 	function tap(obj,fn) {
 		if("ontouchstart" in document.body){
 			// alert("我是触屏设备")
            //触屏设备
+           if(count == 0){
+           	 alert("我是触屏设备")
+           }
            var time = 0;
            obj.addEventListener("touchstart",function(){
               time = new Date;
@@ -195,6 +198,7 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 		   	  }
 		   }
 		}
+		count ++;
 	}
 
 </script>
