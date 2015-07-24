@@ -110,6 +110,14 @@ body{font:18px/1.5 "方正兰亭细黑简体","微软雅黑",Verdana,Arial,Helve
 	display: table-cell;
 	vertical-align: middle;
 }
+.type2-table-f{
+	padding-top: 1px;
+	box-sizing:border-box;
+}
+.f{
+	margin-top: 50%;
+	transform:translateY(-50%);
+}
 </style>
 </head>
 <body>
@@ -148,6 +156,16 @@ body{font:18px/1.5 "方正兰亭细黑简体","微软雅黑",Verdana,Arial,Helve
   内部容器是用padding挤的，所以会充满。	
 </p>
 <div class="center type2-table"><div class="type2">居中啊啊打扫打扫萨达</div></div>
+
+<p>f、内部含有2个子元素。
+</p>
+<div class="center type2-table-f" style="text-align:center;">
+	<div class="f">
+		<h3>你好</h3>
+	    <p>我要居中</p>
+	</div>
+</div>
+
 
 </body>
 </html>
