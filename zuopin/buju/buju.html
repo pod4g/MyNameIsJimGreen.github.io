@@ -203,6 +203,7 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
     	for(var i = 0,len = li.length;i<len;i++){
     		tap(li[i],function(){
     			var a = this.querySelector("a");
+    			alert(a);
     			if(a){
     			  location.href = a.href;
     			}
@@ -210,37 +211,19 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
     	};
 
     function tap(obj,fn) {
-		if(!obj || !fn){
+		if(!obj || !fn || !"ontouchstart" in document.body){
 			return;
 		};
-		if("ontouchstart" in document.body){
-           //触屏设备
-           var time = 0;
-           obj.addEventListener("touchstart",function(){
-              time = new Date;
-           });
-           obj.addEventListener("touchend",function(){
-           	  if(new Date - time <= 150){
-           	  	obj.call(fn);
-           	  };
-           });
-		 count ++;
-		}else{
-			//pc
-		   if(obj.addEventListener){
-		   	 obj.addEventListener("click",function(){
-		   	 	 fn.call(obj);
-		   	 },false);
-		   }else if(obj.attachEvent){
-		   	 obj.attachEvent("onclick",function(){
-		   	 	 fn.call(obj);
-		   	 });
-		   }else{
-		   	  obj.onclick = function(){
-		   	  	 fn.call(obj);
-		   	  }
-		   }
-		}
+      //触屏设备
+       var time = 0;
+       obj.addEventListener("touchstart",function(){
+          time = new Date;
+       });
+       obj.addEventListener("touchend",function(){
+       	  if(new Date - time <= 150){
+       	  	obj.call(fn);
+          };
+       });
 	};
 })();
 </script>
