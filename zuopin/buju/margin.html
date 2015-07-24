@@ -69,14 +69,19 @@
 	<div style="background:green;margin-bottom:10px;">div2</div>
 </div>
 <p>如果不想让这堵墙（border）被看见，可以把颜色设置成透明啊！border:1px solid transparent。padding就没办法了。</p>
+<p style="margin-top:50px;">父子元素的margin collapse的解决办法------父元素inline-block化，激发父元素的BFC</p>
+<div style="background:red;display:inline-block;width:100%;">
+	<div style="background:blue;margin-top:10px;">div1</div>
+	<div style="background:green;margin-bottom:10px;">div2</div>
+</div>
 
-<p>需要注意的是：行内元素也有margin和padding值。</p>
+<!-- <p>需要注意的是：行内元素也有margin和padding值。</p>
 <span style="background:red;margin-left:100px;padding:10px;color:#fff;">span</span>
 <strong style="background:red;margin-left:100px;padding:10px;color:#fff;">strong</strong> 
 <small style="background:red;margin-left:100px;padding:10px;color:#fff;">small</small> 
 <em style="background:red;margin-left:100px;padding:10px;color:#fff;">red</em> 
 <i style="background:red;margin-left:100px;padding:10px;color:#fff;">i</i> 
-<d style="background:red;margin-left:100px;padding:10px;color:#fff;">d</d>
+<d style="background:red;margin-left:100px;padding:10px;color:#fff;">d</d> -->
 
 </body>
 </html>
