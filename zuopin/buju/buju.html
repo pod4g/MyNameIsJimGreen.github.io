@@ -130,12 +130,12 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 <div id="wrapper">
 	<div id="scroller">
 		<ul>
-			<li><a href="float.html" ontouchstart="location.href=this.href">论float</a></li>
-			<li><a href="absolute.html" ontouchstart="location.href=this.href">论absolute</a></li>
-			<li><a href="line-height.html" ontouchstart="location.href=this.href">论line-height</a></li>
-			<li><a href="width.html" ontouchstart="location.href=this.href">论width&height</a></li>
-			<li><a href="margin.html" ontouchstart="location.href=this.href">论margin</a></li>
-			<li><a href="inline-block.html" ontouchstart="location.href=this.href">论inline-block</a></li>
+			<li><a href="float.html">论float</a></li>
+			<li><a href="absolute.html">论absolute</a></li>
+			<li><a href="line-height.html">论line-height</a></li>
+			<li><a href="width.html">论width&height</a></li>
+			<li><a href="margin.html">论margin</a></li>
+			<li><a href="inline-block.html">论inline-block</a></li>
 			<!-- 
 			<li><a href="BFC.html" ontouchstart="location.href=this.href">论BFC</a></li>
 			<li><a href="vertical.html" ontouchstart="location.href=this.href">论vertical</a></li>
@@ -198,5 +198,46 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 </div>
 
 <div id="footer">志在对每个知识点的深入理解</div>
+<script>
+(function(){
+    var li = document.querySelectorAll("#scroller ul li");
+    	for(var i = 0,len = li.length;i<len;i++){
+    		tap(li[i],function(){
+    			location.href = this.querySelector("a").href;
+    		})
+    };
+    
+    function tap(obj,fn) {
+		if("ontouchstart" in document.body){
+           //触屏设备
+           var time = 0;
+           obj.addEventListener("touchstart",function(){
+              time = new Date;
+           });
+           obj.addEventListener("touchend",function(){
+           	  if(new Date - time <= 150){
+           	  	obj.call(fn);
+           	  };
+           });
+		 count ++;
+		}else{
+			//pc
+		   if(obj.addEventListener){
+		   	 obj.addEventListener("click",function(){
+		   	 	 fn.call(obj);
+		   	 },false);
+		   }else if(obj.attachEvent){
+		   	 obj.attachEvent("onclick",function(){
+		   	 	 fn.call(obj);
+		   	 });
+		   }else{
+		   	  obj.onclick = function(){
+		   	  	 fn.call(obj);
+		   	  }
+		   }
+		}
+	}
+   })();
+</script>
 </body>
 </html>
