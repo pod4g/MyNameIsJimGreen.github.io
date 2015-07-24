@@ -198,7 +198,7 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 </div>
 <div id="footer">志在对每个知识点的深入理解</div>
 <script>
-window.onload = function(){
+(function(){
     	var li = document.querySelectorAll("#scroller ul li");
     	for(var i = 0,len = li.length;i<len;i++){
     		tap(li[i],function(){
@@ -207,9 +207,9 @@ window.onload = function(){
     			  location.href = a.href;
     			}
     		})
-    	}
-    }
-	function tap(obj,fn) {
+    	};
+
+    function tap(obj,fn) {
 		if(!obj || !fn){
 			return;
 		};
@@ -241,7 +241,8 @@ window.onload = function(){
 		   	  }
 		   }
 		}
-	}
+	};
+})();
 </script>
 </body>
 </html>
