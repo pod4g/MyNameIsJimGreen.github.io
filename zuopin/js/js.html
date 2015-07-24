@@ -156,16 +156,15 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 </div>
 <div id="footer">每个作品都用心完成</div>
 <script>
-    
-    window.onload = function(){
-    	var li = document.querySelectorAll("#scroller ul li");
+(function(){
+    var li = document.querySelectorAll("#scroller ul li");
     	for(var i = 0,len = li.length;i<len;i++){
     		tap(li[i],function(){
     			location.href = this.querySelector("a").href;
     		})
-    	}
-    }
-	function tap(obj,fn) {
+    };
+    
+    function tap(obj,fn) {
 		if("ontouchstart" in document.body){
            //触屏设备
            var time = 0;
@@ -195,7 +194,7 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 		   }
 		}
 	}
-
+   })();
 </script>
 </body>
 </html>
