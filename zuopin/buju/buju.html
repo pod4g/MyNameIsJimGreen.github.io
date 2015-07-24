@@ -196,18 +196,23 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 		</ul>
 	</div>
 </div>
-
 <div id="footer">志在对每个知识点的深入理解</div>
 <script>
-(function(){
-    var li = document.querySelectorAll("#scroller ul li");
+window.onload = function(){
+    	var li = document.querySelectorAll("#scroller ul li");
     	for(var i = 0,len = li.length;i<len;i++){
     		tap(li[i],function(){
-    			location.href = this.querySelector("a").href;
+    			var a = this.querySelector("a");
+    			if(a){
+    			  location.href = a.href;
+    			}
     		})
-    };
-    
-    function tap(obj,fn) {
+    	}
+    }
+	function tap(obj,fn) {
+		if(!obj || !fn){
+			return;
+		};
 		if("ontouchstart" in document.body){
            //触屏设备
            var time = 0;
@@ -237,7 +242,6 @@ a{text-decoration: none;height:100%;width:100%;color:rgb(36,72,115);display: blo
 		   }
 		}
 	}
-   })();
 </script>
 </body>
 </html>
