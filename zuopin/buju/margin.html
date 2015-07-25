@@ -77,14 +77,24 @@
 	<div style="background:blue;margin-top:10px;">div1</div>
 	<div style="background:green;margin-bottom:10px;">div2</div>
 </div>
+<p style="margin-top:50px;">
+一个inline-block是不能用margin:0 auto;来居中的。
+一个block可以用margin:0 auto;居中，但这个block必须有width，如果他的width为auto，那么默认的width计算是元素充满父级，所以也就没有左右居中的事儿了。
+<br>
+width:auto ---> margin:0 auto: ---> margin:0;
 
-<!-- <p>需要注意的是：行内元素也有margin和padding值。</p>
-<span style="background:red;margin-left:100px;padding:10px;color:#fff;">span</span>
-<strong style="background:red;margin-left:100px;padding:10px;color:#fff;">strong</strong> 
-<small style="background:red;margin-left:100px;padding:10px;color:#fff;">small</small> 
-<em style="background:red;margin-left:100px;padding:10px;color:#fff;">red</em> 
-<i style="background:red;margin-left:100px;padding:10px;color:#fff;">i</i> 
-<d style="background:red;margin-left:100px;padding:10px;color:#fff;">d</d> -->
-
+</p>
+<p>内部元素margin-left和margin-right是不是能越过父元素的，被裁切。下面的例子，父元素和子元素宽高100，子元素margin-left:10，可以看到内部元素被裁切掉10</p>
+<div style="background:red;width:100px;height:100px;border-top:1px #000 solid;">
+	<div style="background:blue;height:100%;margin-left:10px;"></div>
+</div>
+<p>内部元素margin-top能越过父元素。下面的例子，父元素和子元素宽高100，子元素margin-top:10，可以看到内部元素伸出10</p>
+<div style="background:red;width:100px;height:100px;border-top:1px #000 solid;">
+	<div style="background:blue;height:100%;margin-top:10px;"></div>
+</div>
+<p>内部元素margin-bottom能越过父元素。但不被裁切。下面的例子，父元素和子元素宽高100，子元素margin-bottom:10px，可以看到布局没有变化，且不会影响后面的元素。过大，会让body撑开（有滚动条）。</p>
+<div style="background:red;width:100px;height:100px;border-top:1px #000 solid;">
+	<div style="background:blue;height:100%;margin-left:50px;margin-top::;0px;"></div>
+</div>
 </body>
 </html>
