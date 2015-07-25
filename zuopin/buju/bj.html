@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <title>个人作品--布局研究</title>
 <meta name=description content="李彦峰">
 <meta name=keywords content="李彦峰,个人简历">
 <style>
+html{font-size:100px;}
+@media (max-width:800px){
+    html{font-size:50px;}
+}
+@media (max-width:420px){
+	html{font-size: 30px;}
+}
 body {
-	font-size: 12px;
 	font-family: ubuntu, helvetica, arial;
 	font:20px/1.5 "方正兰亭细黑简体","微软雅黑",Verdana,Arial,Helvetica,sans-serif;
 	min-width: 320px;
@@ -20,27 +27,27 @@ h3,p{text-align: center;}
 .left,.main,.right{
 	float: left;
 	text-align: center;
-	font-size: 30px;
+	font-size: .5rem;
 	color: #fff;
 	height: 200px;
 	line-height: 200px;
 }
 .left{
-	width: 150px;
+	width: 1.5rem;
 	background: #E07541;
 	margin-left: -100%;
 }
 .right{
-	width: 150px;
+	width: 1.5rem;
 	background: #E07541;
-	margin-left: -150px; 
+	margin-left: -1.5rem; 
 }
 .main{
 	width: 100%;
 	background: #072256;
 }
 .main-bd{
-	margin:0 150px;
+	margin:0 1.5rem;
     height:200px;
 }
 
@@ -48,7 +55,7 @@ h3,p{text-align: center;}
 	height: 200px;
 	line-height: 200px;
 	text-align: center;
-	font-size: 30px;
+	font-size: .5rem;
 	color: #fff;
 }
 .flex-contain{
@@ -61,7 +68,7 @@ h3,p{text-align: center;}
 
 }
 .flex-left,.flex-right{
-  width: 150px;
+  width: 1.5rem;
   background: #E07541;
 }
 .flex-main{
@@ -79,7 +86,7 @@ h3,p{text-align: center;}
 	height: 200px;
 	line-height: 200px;
 	text-align: center;
-	font-size: 30px;
+	font-size: .5rem;
 	color: #fff;
 }
 .box-contain{
@@ -92,7 +99,7 @@ h3,p{text-align: center;}
 
 }
 .box-left,.box-right{
-  width: 150px;
+  width: 1.5rem;
   background: #E07541;
 }
 .box-main{
@@ -116,10 +123,10 @@ h3,p{text-align: center;}
   color: #fff;
 }
 .calc-left,.calc-right{
-  width: 150px;
+  width: 1.5rem;
   background: #E07541;
   display: inline-block;
-  font-size: 30px;
+  font-size: .5rem;
 }
 .calc-main{
   width:-webkit-calc(100% - 300px);
@@ -128,7 +135,7 @@ h3,p{text-align: center;}
   width:-o-calc(100% - 300px);
   width:calc(100% - 300px);
   display: inline-block;
-  font-size: 30px;
+  font-size: .5rem;
 }
 
 </style>
