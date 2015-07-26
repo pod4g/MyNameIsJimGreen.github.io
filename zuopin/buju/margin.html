@@ -82,19 +82,35 @@
 一个block可以用margin:0 auto;居中，但这个block必须有width，如果他的width为auto，那么默认的width计算是元素充满父级，所以也就没有左右居中的事儿了。
 <br>
 width:auto ---> margin:0 auto: ---> margin:0;
-
 </p>
-<p>内部元素margin-left和margin-right是不是能越过父元素的，被裁切。下面的例子，父元素和子元素宽高100，子元素margin-left:10，可以看到内部元素被裁切掉10</p>
-<div style="background:red;width:100px;height:100px;border-top:1px #000 solid;">
-	<div style="background:blue;height:100%;margin-left:10px;"></div>
-</div>
-<p>内部元素margin-top能越过父元素。下面的例子，父元素和子元素宽高100，子元素margin-top:10，可以看到内部元素伸出10</p>
-<div style="background:red;width:100px;height:100px;border-top:1px #000 solid;">
-	<div style="background:blue;height:100%;margin-top:10px;"></div>
-</div>
+
+
 <p>内部元素margin-bottom能越过父元素。但不被裁切。下面的例子，父元素和子元素宽高100，子元素margin-bottom:10px，可以看到布局没有变化，且不会影响后面的元素。过大，会让body撑开（有滚动条）。</p>
 <div style="background:red;width:100px;height:100px;border-top:1px #000 solid;">
-	<div style="background:blue;height:100%;margin-left:50px;margin-top::;0px;"></div>
+	<div style="background:blue;height:100%;margin-left:50px;margin-top:0px;"></div>
+</div>
+
+<p>内部元素的margin-left和margin-top可以越过父元素，且不会被裁切</p>
+<p>红块200x200，蓝块50x50</p>
+<div style="background:red;width:200px;height:200px;margin:0 auto;">
+	<div style="background:blue;width:50px;height:50px;"></div>
+</div>
+<p>margin-left:180px</p>
+<div style="background:red;width:200px;height:200px;margin:0 auto;">
+	<div style="background:blue;width:50px;height:50px;margin-left:180px"></div>
+</div>
+<p>margin-left:-20px</p>
+<div style="background:red;width:200px;height:200px;margin:0 auto;">
+	<div style="background:blue;width:50px;height:50px;margin-left:-20px"></div>
+</div>
+<p>margin-top:180px</p>
+<div style="background:red;width:200px;height:200px;margin:0 auto;border-top:1px #000 solid;">
+	<div style="background:blue;width:50px;height:50px;margin-top:180px"></div>
+</div>
+
+<p style="margin:100px 0">为了防止margin collapse，需要加上上边框。margin-top:-20px</p>
+<div style="background:red;width:200px;height:200px;margin:0 auto;border-top:1px #000 solid;">
+	<div style="background:blue;width:50px;height:50px;margin-top:-20px"></div>
 </div>
 </body>
 </html>
