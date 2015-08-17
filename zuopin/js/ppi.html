@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>手机屏幕、PPI计算</title>
+<style>
+    fieldset{margin-top: 30px;}
+    input{margin-bottom: 20px;}
+	#screenW{margin-bottom: 20px;}
+</style>
+</head>
+<body>
+<fieldset>
+    <legend>计算移动设备尺寸(单位:厘米)</legend>
+    <label for="screenW">屏幕宽度:</label>
+	<input type="text" name="screenW" id="screenW"><br>
+	<label for="screenH">屏幕高度:</label>
+	<input type="text" name="screenH" id="screenH"><br>
+	<label for="screenW">屏幕尺寸(对角线长度,单位吋):</label>
+	<input type="text" id="calcValue"><br>
+	<label for="screenW">屏幕尺寸(对角线长度,单位CM):</label>
+	<input type="text" id="calcValue2">
+</fieldset>
+
+<fieldset>
+    <legend>PPI计算</legend>
+    <label for="pw">屏幕宽度(像素)：</label>
+	<input type="text" id="pw"><br>
+	<label for="ph">屏幕高度(像素)：</label>
+	<input type="text" id="ph"><br>
+	<label for="ps">屏幕大小(英寸)：</label>
+	<input type="text" id="ps"><br>
+	<label for="ppi">PPI：</label>
+	<input type="text" id="ppi">
+</fieldset>
+<img src="image/ppi.png">
+<script>
+	
+	(function(){
+        var doc = document;
+        var screenW = doc.getElementById("screenW");
+        var screenH = doc.getElementById("screenH");
+        var calcValue = doc.getElementById("calcValue");
+        var calcValue2 = doc.getElementById("calcValue2");
+
+        var pw = doc.getElementById("pw");
+        var ph = doc.getElementById("ph");
+        var ps = doc.getElementById("ps");
+        var ppi = doc.getElementById("ppi");
+
+        var sqrt = Math.sqrt;
+        
+        screenH.oninput = function(){
+        	if(screenW.value){
+        		var a = this.value * this.value + screenW.value * screenW.value;
+        		a = sqrt(a);
+        		calcValue.value = a/2.54;
+        		calcValue2.value = a;
+        	}
+        }
+        screenW.oninput = function(){
+        	if(screenH.value){
+        		var a = this.value * this.value + screenH.value * screenH.value;
+        		a = sqrt(a);
+        		calcValue.value = a/2.54;
+        		calcValue2.value = a;
+        	}
+        }
+
+        ps.oninput = function(){
+        	if(pw.value && ph.value){
+        		var a = sqrt(pw.value * pw.value + ph.value * ph.value);
+        		a = a / ps.value;
+                ppi.value = a;
+        	}
+        }
+        ph.oninput = function(){
+        	if(pw.value && ps.value){
+        		var a = sqrt(pw.value * pw.value + ph.value * ph.value);
+        		a = a / ps.value;
+                ppi.value = a;
+        	}
+        }
+        pw.oninput = function(){
+        	if(ps.value && ph.value){
+        		var a = sqrt(pw.value * pw.value + ph.value * ph.value);
+        		a = a / ps.value;
+                ppi.value = a;
+        	}
+        }
+	})();
+
+</script>
+
+</body>
+</html>
